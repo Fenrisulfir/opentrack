@@ -127,7 +127,7 @@ void PointExtractor::extract_points(const cv::Mat& frame, cv::Mat& preview_frame
         frame_blobs = cv::Mat1b(frame.rows, frame.cols);
     }
 
-    const pt_color_type color = s.blob_color;
+    constexpr pt_color_type color = pt_color_average;
 
     switch (color)
     {
@@ -180,7 +180,7 @@ void PointExtractor::extract_points(const cv::Mat& frame, cv::Mat& preview_frame
     const double region_size_min = s.min_point_size;
     const double region_size_max = s.max_point_size;
 
-    if (!s.auto_threshold)
+    if (false)
     {
         const int thres = s.threshold;
         cv::threshold(frame_gray, frame_bin, thres, 255, cv::THRESH_BINARY);
