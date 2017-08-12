@@ -570,9 +570,6 @@ void MainWindow::show_pose()
 {
     set_is_visible(*this);
 
-    if (mapping_widget)
-        mapping_widget->refresh_tab();
-
     if (!check_is_visible())
         return;
 
