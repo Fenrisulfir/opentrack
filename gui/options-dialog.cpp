@@ -47,10 +47,10 @@ OptionsDialog::OptionsDialog(std::function<void(bool)> pause_keybindings) :
     connect(ui.buttonBox, SIGNAL(accepted()), this, SLOT(doOK()));
     connect(ui.buttonBox, SIGNAL(rejected()), this, SLOT(doCancel()));
 
+#if 0
     tie_setting(main.tray_enabled, ui.trayp);
     tie_setting(main.tray_start, ui.tray_start);
 
-#if 0
     tie_setting(main.center_at_startup, ui.center_at_startup);
 
     tie_setting(main.tcomp_p, ui.tcomp_enable);
@@ -108,10 +108,10 @@ OptionsDialog::OptionsDialog(std::function<void(bool)> pause_keybindings) :
         { main.key_center1, ui.center_text, ui.bind_center },
         { main.key_center2, ui.center_text_2, ui.bind_center_2 },
 
+#if 0
         { main.key_toggle1, ui.toggle_text, ui.bind_toggle },
         { main.key_toggle2, ui.toggle_text_2, ui.bind_toggle_2 },
 
-#if 0
         { main.key_toggle_press1, ui.toggle_held_text, ui.bind_toggle_held },
         { main.key_toggle_press2, ui.toggle_held_text_2, ui.bind_toggle_held_2 },
 

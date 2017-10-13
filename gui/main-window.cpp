@@ -64,7 +64,7 @@ MainWindow::MainWindow() :
     //connect(ui.btnEditCurves, SIGNAL(clicked()), this, SLOT(show_mapping_window()));
     connect(ui.btnShortcuts, SIGNAL(clicked()), this, SLOT(show_options_dialog()));
     connect(ui.btnShowEngineControls, SIGNAL(clicked()), this, SLOT(show_tracker_settings()));
-    connect(ui.btnShowServerControls, SIGNAL(clicked()), this, SLOT(show_proto_settings()));
+    //connect(ui.btnShowServerControls, SIGNAL(clicked()), this, SLOT(show_proto_settings()));
     connect(ui.btnShowFilterControls, SIGNAL(clicked()), this, SLOT(show_filter_settings()));
     connect(ui.btnStartTracker, SIGNAL(clicked()), this, SLOT(start_tracker_()));
     connect(ui.btnStopTracker, SIGNAL(clicked()), this, SLOT(stop_tracker_()));
@@ -80,10 +80,10 @@ MainWindow::MainWindow() :
 
         for (std::shared_ptr<dylib>& x : modules.protocols())
             ui.iconcomboProtocol->addItem(x->icon, x->name);
-#endif
 
         for (std::shared_ptr<dylib>& x : modules.filters())
             ui.iconcomboFilter->addItem(x->icon, x->name);
+#endif
     }
 
     // timers
@@ -135,8 +135,8 @@ MainWindow::MainWindow() :
 #if 0
     tie_setting(m.tracker_dll, ui.iconcomboTrackerSource);
     tie_setting(m.protocol_dll, ui.iconcomboProtocol);
-#endif
     tie_setting(m.filter_dll, ui.iconcomboFilter);
+#endif
 
     connect(this, &MainWindow::start_tracker,
             this, [&]() -> void { qDebug() << "start tracker"; start_tracker_(); },
@@ -433,9 +433,11 @@ void MainWindow::update_button_state(bool running, bool inertialp)
     ui.iconcomboProfile->setEnabled(not_running);
     ui.btnStartTracker->setEnabled(not_running);
     ui.btnStopTracker->setEnabled(running);
-    //ui.iconcomboProtocol->setEnabled(not_running);
+#if 0
+    ui.iconcomboProtocol->setEnabled(not_running);
     ui.iconcomboFilter->setEnabled(not_running);
-    //ui.iconcomboTrackerSource->setEnabled(not_running);
+    ui.iconcomboTrackerSource->setEnabled(not_running);
+#endif
     ui.profile_button->setEnabled(not_running);
     ui.video_frame_label->setVisible(not_running || inertialp);
     if(not_running)

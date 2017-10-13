@@ -78,7 +78,7 @@ class MainWindow : public QMainWindow, private State
     }
     std::shared_ptr<dylib> current_filter()
     {
-        return modules.filters().value(ui.iconcomboFilter->currentIndex(), nullptr);
+        return modules.filters().value(1, nullptr);
     }
 
     void update_button_state(bool running, bool inertialp);

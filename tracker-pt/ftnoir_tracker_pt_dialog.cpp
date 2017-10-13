@@ -73,8 +73,6 @@ TrackerDialog_PT::TrackerDialog_PT()
 
 #endif
 
-    tie_setting(s.active_model_panel, ui.model_used);
-
     connect( ui.tcalib_button,SIGNAL(toggled(bool)), this,SLOT(startstop_trans_calib(bool)));
 
     connect(ui.buttonBox, SIGNAL(accepted()), this, SLOT(doOK()));
@@ -96,6 +94,7 @@ TrackerDialog_PT::TrackerDialog_PT()
 
     connect(this, &TrackerDialog_PT::poll_tracker_info, this, &TrackerDialog_PT::poll_tracker_info_impl, Qt::DirectConnection);
 
+#if 0
     static constexpr pt_color_type color_types[] = {
         pt_color_average,
         pt_color_natural,
@@ -105,11 +104,10 @@ TrackerDialog_PT::TrackerDialog_PT()
 
     for (unsigned k = 0; k < std::size(color_types); k++)
         ui.blob_color->setItemData(k, int(color_types[k]));
-
-    tie_setting(s.blob_color, ui.blob_color);
+#endif
 
     tie_setting(s.threshold, ui.threshold_value_display, [this](int x) {
-        if (!s.auto_threshold)
+        if (false)
             return tr("Brightness %1/255").arg(x);
         else
         {

@@ -59,7 +59,6 @@ file(GLOB opentrack-subprojects
     "tracker-pt/${C}"
     "proto-mouse/${C}"
     "filter-accela/${C}"
-    "filter-kalman/${C}"
     "options/${C}"
     "api/${C}"
     "compat/${C}"
